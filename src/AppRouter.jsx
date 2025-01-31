@@ -8,7 +8,8 @@ import AboutPage from "./component/AboutPage";
 import RegisterPage from "./component/RegisterPage";
 import LoginPage from "./component/LoginPage";
 import DashboardLayout from "./component/Dashboard/DashboardLayout";
-// import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "./component/ErrorPage";
 // import ErrorPage from "./components/ErrorPage";
 
 const AppRouter = () => {
@@ -17,11 +18,33 @@ const AppRouter = () => {
       <Navbar />
       <Toaster position="top-center" />
       <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/about" element={<AboutPage />}></Route>
-        <Route path="/register" element={<RegisterPage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/dashboard" element={<DashboardLayout />}></Route>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route
+          path="/register"
+          element={
+            <PrivateRoute publicPage={true}>
+              <RegisterPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PrivateRoute publicPage={true}>
+              <LoginPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute publicPage={false}>
+              <DashboardLayout />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </>
