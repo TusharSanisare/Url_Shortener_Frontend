@@ -4,7 +4,7 @@ import { dummyData } from "../../dummyData/data";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import { useFetchMyShortUrls, useFetchTotalClicks } from "../../hooks/useQuery";
 import { FaLink } from "react-icons/fa";
-// import ShortenUrlList from "./ShortenUrlList";
+import ShortenUrlList from "./ShortenUrlList";
 import { useNavigate } from "react-router-dom";
 import ShortenPopUp from "./ShortenPopUp";
 // import Loader from "../Loader";
@@ -15,7 +15,7 @@ const DashboardLayout = () => {
   const navigate = useNavigate();
   const [shortenPopUp, setShortenPopUp] = useState(false);
 
-  console.log(useFetchTotalClicks(token, onError));
+  // console.log(useFetchTotalClicks(token, onError));
 
   const {
     isLoading,
@@ -63,8 +63,7 @@ const DashboardLayout = () => {
           </div>
 
           <div>
-            {true ? (
-              // {!isLoading && myShortenUrls.length === 0 ? (
+            {!isLoading && myShortenUrls.length === 0 ? (
               <div className="flex justify-center pt-16">
                 <div className="flex gap-2 items-center justify-center  py-6 sm:px-8 px-5 rounded-md   shadow-lg  bg-gray-50">
                   <h1 className="text-slate-800 font-montserrat   sm:text-[18px] text-[14px] font-semibold mb-1 ">
@@ -74,8 +73,7 @@ const DashboardLayout = () => {
                 </div>
               </div>
             ) : (
-              // <ShortenUrlList data={myShortenUrls} />
-              <p>pata nhi</p>
+              <ShortenUrlList data={myShortenUrls} />
             )}
           </div>
         </div>
