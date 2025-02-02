@@ -8,12 +8,14 @@ import ShortenUrlList from "./ShortenUrlList";
 import { useNavigate } from "react-router-dom";
 import ShortenPopUp from "./ShortenPopUp";
 import Loader from "../Loader";
+import AIShortenPopUp from "./AIShortenPopUp";
 
 const DashboardLayout = () => {
   // const refetch = false;
   const { token } = useStoreContext();
   const navigate = useNavigate();
   const [shortenPopUp, setShortenPopUp] = useState(false);
+  const [aiShortenPopUp, setAIShortenPopUp] = useState(false);
 
   // console.log(useFetchTotalClicks(token, onError));
 
@@ -54,7 +56,13 @@ const DashboardLayout = () => {
           </div>
           <div className="py-5 sm:text-end text-center">
             <button
-              className="bg-custom-gradient px-4 py-2 rounded-md text-white"
+              className="bg-custom-gradient px-4 py-2 rounded-md text-white m-2 cursor-pointer"
+              onClick={() => setAIShortenPopUp(true)}
+            >
+              Try AI Suggested Short Url
+            </button>
+            <button
+              className="px-4 py-2 rounded-md m-2 text-blue-800 border border-blue-700 cursor-pointer"
               onClick={() => setShortenPopUp(true)}
             >
               Create a New Short URL
@@ -82,6 +90,11 @@ const DashboardLayout = () => {
         refetch={refetch}
         open={shortenPopUp}
         setOpen={setShortenPopUp}
+      />
+      <AIShortenPopUp
+        refetch={refetch}
+        open={aiShortenPopUp}
+        setOpen={setAIShortenPopUp}
       />
     </div>
   );

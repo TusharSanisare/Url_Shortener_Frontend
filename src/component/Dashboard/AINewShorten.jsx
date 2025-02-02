@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { useStoreContext } from "../../contextApi/ContextApi";
 import { useForm } from "react-hook-form";
-// import { data } from "autoprefixer";
 import TextField from "../TextField";
 import { Tooltip } from "@mui/material";
 import { RxCross2 } from "react-icons/rx";
 import api from "../../api/api";
 import toast from "react-hot-toast";
+import AiGeneraterUrl from "./AiGeneraterUrl";
+import { motion } from "framer-motion";
 
-const CreateNewShorten = ({ setOpen, refetch }) => {
+const AINewShorten = ({ setOpen, refetch }) => {
   const { token } = useStoreContext();
   const [loading, setLoading] = useState(false);
+  const [originalUrl, setOriginalUrl] = useState();
+  const [aiGeneratedUrls, setAiGeneratedUrls] = useState([]);
 
   const {
     register,
@@ -26,8 +29,9 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
 
   const createShortUrlHandler = async (data) => {
     setLoading(true);
+    setOriginalUrl(data.originalUrl);
     try {
-      const { data: res } = await api.post("/api/urls/shorten", data, {
+      const { data: res } = await api.post("/api/urls/getAiUrls", data, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -35,19 +39,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
         },
       });
 
-      const shortenUrl =
-        import.meta.env.VITE_REACT_FRONT_END_URL + "/" + `${res.shortUrl}`;
-      navigator.clipboard.writeText(shortenUrl).then(() => {
-        toast.success("Short URL Copied to Clipboard", {
-          position: "bottom-center",
-          className: "mb-5",
-          duration: 3000,
-        });
-      });
-
-      await refetch();
-      reset();
-      setOpen(false);
+      setAiGeneratedUrls(res);
     } catch (error) {
       toast.error("Create ShortURL Failed");
     } finally {
@@ -62,7 +54,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
         className="sm:w-[450px] w-[360px] relative  shadow-custom pt-8 pb-5 sm:px-8 px-4 rounded-lg"
       >
         <h1 className="font-montserrat sm:mt-0 mt-3 text-center  font-bold sm:text-2xl text-[22px] text-slate-800 ">
-          Create New Shorten Url
+          Get AI Suggested Short Url's
         </h1>
 
         <hr className="mt-2 sm:mb-5 mb-3 text-slate-950" />
@@ -80,12 +72,34 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
           />
         </div>
 
-        <button
-          className="bg-customRed font-semibold text-white w-32  bg-custom-gradient  py-2  transition-colors  rounded-md my-3"
-          type="text"
-        >
-          {loading ? "Loading..." : "Create"}
-        </button>
+        {aiGeneratedUrls.length > 0 && (
+          <>
+            <motion.p className="font-medium mt-2 mb-1">
+              Select Short Url That you Like
+            </motion.p>
+            <div className="border border-slate-600 rounded mb-4">
+              {aiGeneratedUrls.map((link, index) => (
+                <AiGeneraterUrl
+                  key={index}
+                  shortUrl={link}
+                  reset={reset}
+                  setOpen={setOpen}
+                  refetch={refetch}
+                  originalUrl={originalUrl}
+                />
+              ))}
+            </div>
+          </>
+        )}
+
+        {aiGeneratedUrls.length <= 0 && (
+          <button
+            className="bg-customRed font-semibold text-white w-40  bg-custom-gradient  py-2  transition-colors  rounded-md my-3"
+            type="text"
+          >
+            {loading ? "Loading..." : "Get AI Suggestions"}
+          </button>
+        )}
 
         {!loading && (
           <Tooltip title="Close">
@@ -103,4 +117,4 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
   );
 };
 
-export default CreateNewShorten;
+export default AINewShorten;
