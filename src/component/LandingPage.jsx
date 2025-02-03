@@ -28,10 +28,8 @@ const LandingPage = () => {
             transition={{ duration: 0.8 }}
             className="font-bold font-roboto text-slate-800 md:text-5xl sm:text-4xl text-3xl  md:leading-[55px] sm:leading-[45px] leading-10 lg:w-full md:w-[70%] w-full"
           >
-            {/* <span className="text-blue-700">Ur_Shorty</span> Simplifies URL
-            Shortening For Efficient Sharing. */}
-            Looking To Store & Share Your Long URL's Efficiently Use{" "}
-            <span className="text-blue-700">Ur_Shorty</span>.
+            <span className="text-blue-700">Ur_Shorty</span> is an AI powered
+            Url's shortener, Use AI to get personalized Url.
           </motion.h1>
           <p className="text-slate-700 text-sm my-5 ">
             Ur_Shorty streamlines the process of URL shortening, making sharing
@@ -48,10 +46,10 @@ const LandingPage = () => {
               }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              onClick={dashBoardNavigateHandler}
-              className="bg-custom-gradient  w-40 text-white rounded-md  py-2"
+              onClick={() => navigate("/dashboard")}
+              className="bg-custom-gradient  lg:w-55 w-40  lg:font-bold text-white rounded-md py-2 lg:py-4 cursor-pointer"
             >
-              Manage Links
+              Try AI Url Shortener
             </motion.button>
             <motion.button
               initial={{ opacity: 0, y: 80 }}
@@ -61,10 +59,10 @@ const LandingPage = () => {
               }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              onClick={dashBoardNavigateHandler}
-              className="border-btnColor border w-40 text-btnColor rounded-md  py-2 "
+              onClick={() => navigate("/dashboard")}
+              className="border-btnColor w-40 lg:w-55  lg:font-bold border rounded-md  py-2 lg:py-4 cursor-pointer"
             >
-              Create Short Link
+              Manage Url's
             </motion.button>
           </div>
         </div>

@@ -31,7 +31,7 @@ export const useFetchTotalClicks = (token, onError) => {
     "url-totalclick",
     async () => {
       return await api.get(
-        "/api/urls/totalClicks?startDate=2025-01-29&endDate=2026-02-01",
+        "/api/urls/totalClicks?startDate=2025-01-29&endDate=2050-02-01",
         {
           headers: {
             "Content-Type": "application/json",
