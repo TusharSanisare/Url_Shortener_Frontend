@@ -75,7 +75,7 @@ const LandingPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="sm:w-[480px] w-[400px] object-cover rounded-md"
-            src="../src/assets/images/img2.png"
+            src="/images/img2.png"
             alt=""
           />
         </div>
