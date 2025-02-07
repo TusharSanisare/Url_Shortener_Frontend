@@ -2,6 +2,12 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import { motion } from "framer-motion";
 
+import img2 from "../assets/images/img2.png";
+import create_url_shortener from "../assets/images/create-url-shortener.png";
+import analysis from "../assets/images/analysis.jpg";
+import security from "../assets/images/security.jpg";
+import fastspeed from "../assets/images/fastspeed.jpeg";
+
 import Card from "./Card";
 import { useStoreContext } from "../contextApi/ContextApi";
 
@@ -75,7 +81,8 @@ const LandingPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="sm:w-[480px] w-[400px] object-cover rounded-md"
-            src="/src/assets/images/img2.png"
+            // src="/src/assets/images/img2.png"
+            src={img2}
             alt=""
           />
         </div>
@@ -97,22 +104,22 @@ const LandingPage = () => {
           <Card
             title="Simple URL Shortening"
             desc="Experience the ease of creating short, memorable URLs in just a few clicks. Our intuitive interface and quick setup process ensure you can start shortening URLs without any hassle."
-            image="create-url-shortener.png"
+            image={create_url_shortener}
           />
           <Card
             title="Powerful Analytics"
             desc="Gain insights into your link performance with our comprehensive analytics dashboard. Track clicks, geographical data, and referral sources to optimize your marketing strategies."
-            image="analysis.jpg"
+            image={analysis}
           />
           <Card
             title="Enhanced Security"
             desc="Rest assured with our robust security measures. All shortened URLs are protected with advanced encryption, ensuring your data remains safe and secure."
-            image="security.jpg"
+            image={security}
           />
           <Card
             title="Fast and Reliable"
             desc="Enjoy lightning-fast redirects and high uptime with our reliable infrastructure. Your shortened URLs will always be available & responsive, ensuring a seamless experience for your users."
-            image="fastspeed.jpeg"
+            image={fastspeed}
           />
         </div>
       </div>

@@ -20,7 +20,7 @@ const Card = ({ title, desc, image }) => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
         className="object-cover rounded-md"
-        src={`../src/assets/images/${image}`}
+        src={image}
         alt=""
       />
       <h1 className="text-slate-900 text-xl font-bold ">{title}</h1>
