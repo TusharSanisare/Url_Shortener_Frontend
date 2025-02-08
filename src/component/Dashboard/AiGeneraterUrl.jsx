@@ -25,7 +25,7 @@ const AiGeneraterUrl = ({ shortUrl, reset, setOpen, refetch, originalUrl }) => {
         },
       });
 
-      console.log(res);
+      // console.log(res);
 
       const shortenUrl =
         import.meta.env.VITE_REACT_FRONT_END_URL + "/" + `${shortUrl}`;
