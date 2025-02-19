@@ -52,6 +52,13 @@ const LoginPage = () => {
         <h1 className="text-center font-serif text-btnColor font-bold lg:text-3xl text-2xl">
           Login Here
         </h1>
+        <p className="text-center font-serif text-red-400">
+          Note: It's a personal project we our using free services and databases
+          so it take time to load
+        </p>
+        <p className="text-center font-serif text-red-700">
+          Please Referesh and Try Again if not work!!! sorry...
+        </p>
 
         <hr className="mt-2 mb-5 text-black" />
 

@@ -51,6 +51,14 @@ const RegisterPage = () => {
           Register Here
         </h1>
 
+        <p className="text-center font-serif text-red-400">
+          Note: It's a personal project we our using free services and databases
+          so it take time to load
+        </p>
+        <p className="text-center font-serif text-red-700">
+          Please Referesh and Try Again if not work!!! sorry...
+        </p>
+
         <hr className="mt-2 mb-5 text-black" />
 
         <div className="flex flex-col gap-3">

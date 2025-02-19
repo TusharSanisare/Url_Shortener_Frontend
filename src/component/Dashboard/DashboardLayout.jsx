@@ -37,7 +37,16 @@ const DashboardLayout = () => {
   return (
     <div className="lg:px-14 sm:px-8 px-4 min-h-[calc(100vh-64px)]">
       {loader ? (
-        <Loader />
+        <>
+          <p className="text-center font-serif text-red-400">
+            Note: It's a personal project we our using free services and
+            databases so it take time to load
+          </p>
+          <p className="text-center font-serif text-red-700">
+            Please Referesh and Try Again if not work!!! sorry...
+          </p>
+          <Loader />
+        </>
       ) : (
         <div className="lg:w-[90%] w-full mx-auto py-16">
           <div className=" h-96 relative ">
@@ -82,6 +91,15 @@ const DashboardLayout = () => {
             ) : (
               <ShortenUrlList data={myShortenUrls} />
             )}
+          </div>
+          <div className="m-3">
+            <p className="text-center font-serif text-red-400">
+              Note: It's a personal project we our using free services and
+              databases so it take time to load
+            </p>
+            <p className="text-center font-serif text-red-700">
+              Please Referesh and Try Again if not work!!! sorry...
+            </p>
           </div>
         </div>
       )}
